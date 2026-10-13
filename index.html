@@ -39,7 +39,7 @@
     <div class="icon">&#128274;</div>
     <h1>Autorizzazione completata</h1>
     <p id="status">Apro l'app Budget&hellip;</p>
-    <p><a id="manual" href="#" style="display:none">Apri Budget manualmente</a></p>
+    <p><a id="manual" href="#">Apri Budget</a></p>
   </main>
 
   <script>
@@ -51,12 +51,13 @@
       var manual = document.getElementById("manual");
       manual.href = target;
 
+      // Chrome may block an automatic external-protocol launch without a user
+      // gesture, so the button is always visible as a fallback.
       window.location.replace(target);
 
       setTimeout(function () {
         document.getElementById("status").textContent =
-          "Se l'app non si apre da sola, usa il pulsante qui sotto.";
-        manual.style.display = "inline-block";
+          "Se non si apre da sola, tocca il pulsante qui sotto.";
       }, 1200);
     })();
   </script>
